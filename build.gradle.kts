@@ -20,9 +20,8 @@ gradlePlugin {
     vcsUrl = "https://github.com/nbottarini/kotlin-conventions-gradle-plugin.git"
 
     plugins {
-        create("kotlinConventions") {
-            id = "dev.botta.kotlin-conventions"
-            displayName = "Kotlin Conventions"
+        matching { it.name == "dev.botta.kotlin-conventions" }.configureEach {
+            displayName = "dev.botta.kotlin-conventions"
             description = "A plugin that applies Kotlin conventions"
             tags = listOf("kotlin", "conventions")
         }
