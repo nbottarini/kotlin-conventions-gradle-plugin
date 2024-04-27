@@ -33,6 +33,10 @@ tasks.named<Copy>("processResources") {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
+tasks.named<Copy>("processTestResources") {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 kotlin {
     sourceSets["main"].apply {
         kotlin.srcDirs("src", "generated")
