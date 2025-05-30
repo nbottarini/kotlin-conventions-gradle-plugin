@@ -2,18 +2,22 @@ import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     `kotlin-dsl`
-    id("com.vanniktech.maven.publish") version "0.28.0"
+    id("com.vanniktech.maven.publish") version "0.32.0"
 }
 
 group = "dev.botta"
-version = "0.3.0"
+version = "0.4.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.21")
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
 mavenPublishing {

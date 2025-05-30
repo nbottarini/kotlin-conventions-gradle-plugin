@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm")
 }
@@ -7,8 +5,6 @@ plugins {
 repositories {
     mavenCentral()
 }
-
-tasks.withType<KotlinCompile> { kotlinOptions.jvmTarget = "17" }
 
 tasks.withType<Test> {
     useJUnitPlatform { excludeTags("slow") }
@@ -38,24 +34,16 @@ tasks.named<Copy>("processTestResources") {
 }
 
 kotlin {
-    sourceSets["main"].apply {
-        kotlin.srcDirs("src", "generated")
-        resources.srcDirs("resources")
-    }
-    sourceSets["test"].apply {
-        kotlin.srcDir("test")
-        resources.srcDir("test_resources")
-    }
+    jvmToolchain(21)
+    sourceSets["main"].kotlin.srcDirs("src", "generated")
+    sourceSets["main"].resources.srcDirs("resources")
+    sourceSets["test"].kotlin.srcDir("test")
+    sourceSets["test"].resources.srcDir("test_resources")
 }
 
 java {
-    sourceSets["main"].apply {
-        java.srcDirs("src", "generated")
-        resources.srcDirs("resources")
-    }
-    sourceSets["test"].apply {
-        java.srcDir("test")
-        resources.srcDir("test_resources")
-    }
+    sourceSets["main"].java.srcDirs("src", "generated")
+    sourceSets["main"].resources.srcDirs("resources")
+    sourceSets["test"].java.srcDir("test")
+    sourceSets["test"].resources.srcDir("test_resources")
 }
-
