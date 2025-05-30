@@ -34,7 +34,6 @@ tasks.named<Copy>("processTestResources") {
 }
 
 kotlin {
-    jvmToolchain(21)
     sourceSets["main"].kotlin.srcDirs("src", "generated")
     sourceSets["main"].resources.srcDirs("resources")
     sourceSets["test"].kotlin.srcDir("test")
